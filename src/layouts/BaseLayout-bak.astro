@@ -1,0 +1,57 @@
+---
+// src/layouts/BaseLayout.astro
+const { title, description, ogImage } = Astro.props;
+//import '../styles/global.css';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content="astro" />
+    <title>{title}</call-to-action}</title>
+    <meta name="description" content={description} />
+    
+    <!-- Open Graph / Facebook (用于社交媒体分享优化) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+
+    <!-- Twitter -->
+    <meta property#twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/" class="logo">🚀 Automation Library</a>
+        <div class="links">
+          <a href="/about">About</a>
+          <a href="/archive">Archive</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <slot /> <!-- 这里是文章内容注入点 -->
+    </main>
+
+    <footer>
+      <p>&copy; {new Date().getFullYear()} Automation Library. Built by AI.</p>
+    </footer>
+  </body>
+</html>
+
+<style>
+  /* 极简的高性能 CSS */
+  :root { --primary: #2563eb; --text: #1f2937; --bg: #ffffff; }
+  body { font-family: sans-serif; color: var(--text); line-height: 1.6; margin: 0; }
+  nav { display: flex; justify-content: space-between; padding: 1rem 2rem; border-bottom: 1px solid #eee; }
+  main { max-width: 800px; margin: 0 auto; padding: 2rem; }
+  footer { text-align: center; padding: 2rem; border-top: 1px solid #eee; margin-top: 4rem; }
+  .logo { font-weight: bold; font-size: 1.5rem; text-decoration: none; color: var; }
+  a { color: var(--primary); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+</style>
